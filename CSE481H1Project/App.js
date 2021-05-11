@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, ScrollView, FlatList, View, TextInput } from 'react-native';
 import AddItem from './components/addItem';
+import Header from './components/header';
+import Item from './components/item';
 
 const App = () => {
     const [list, setList] = useState([
@@ -14,6 +16,7 @@ const App = () => {
         container: {
         },
         content: {
+          padding: 40,
         },
         list: {
         }
@@ -29,12 +32,12 @@ const App = () => {
 
     return (
         <View style={styles.container}>
-            <Text>Grocery List</Text>
+            <Header headerTitle="My Grocery List" />
             <View style={styles.content}>
                 <AddItem submitHandler={ submitHandler } />
                 <FlatList style={styles.list}
                     data={list}
-                    renderItem={({item}) => <Text>{item.text}</Text>}/>
+                    renderItem={({item}) => (<Item item={item}/>)}/>
             </View>
         </View>
     );

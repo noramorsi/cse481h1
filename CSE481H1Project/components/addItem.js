@@ -5,13 +5,20 @@ export default function AddItem({ submitHandler }) {
 
     const [text, setText] = useState();
 
+    const styles = StyleSheet.create({
+        newItem: {
+            fontSize: 20,
+        },
+    });
+
+
     const changeHandler = (value) => {
         setText(value)
     }
 
     return (
         <View>
-            <TextInput
+            <TextInput style={styles.newItem}
                 placeholder="new item..."
                 onChangeText={changeHandler}
             />
@@ -22,4 +29,5 @@ export default function AddItem({ submitHandler }) {
             />
         </View>
     )
+
 }
