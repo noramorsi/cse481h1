@@ -9,7 +9,8 @@ import Item from './components/item';
 const App = () => {
     const [list, setList] = useState([
         {text: 'coffee', key: 1},
-        {text: 'bread', key: 2}
+        {text: 'bread', key: 2},
+        {text: 'milk', key: 3}
     ]);
 
     const styles = StyleSheet.create({
@@ -30,6 +31,12 @@ const App = () => {
         })
     };
 
+    const deleteHandler = (itemKey) => {
+        setList((prevList) => {
+            return prevList.filter(current => current.key != itemKey);
+        });
+    }
+
     return (
         <View style={styles.container}>
             <Header headerTitle="My Grocery List" />
@@ -37,7 +44,8 @@ const App = () => {
                 <AddItem submitHandler={ submitHandler } />
                 <FlatList style={styles.list}
                     data={list}
-                    renderItem={({item}) => (<Item item={item}/>)}/>
+                    renderItem={({item}) => (
+                    <Item item={item} deleteHandler={ deleteHandler }/>)}/>
             </View>
         </View>
     );

@@ -11,19 +11,17 @@ export default function AddItem({ submitHandler }) {
         },
     });
 
-
-    const changeHandler = (value) => {
-        setText(value)
-    }
-
     return (
         <View>
             <TextInput style={styles.newItem}
                 placeholder="new item..."
-                onChangeText={changeHandler}
-            />
+                onChangeText={text => setText(text.trim())}            />
             <Button
-                onPress={() => submitHandler(text)}
+                onPress={() => {
+                    if (text != "") {
+                        submitHandler(text);                        
+                    }
+                }}
                 title='add item'
                 color='blue'
             />
