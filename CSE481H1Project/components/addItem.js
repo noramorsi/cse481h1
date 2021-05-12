@@ -15,11 +15,14 @@ export default function AddItem({ submitHandler }) {
         <View>
             <TextInput style={styles.newItem}
                 placeholder="new item..."
-                onChangeText={text => setText(text.trim())}            />
+                onChangeText={text => setText(text)}
+                value = {text}
+            />
             <Button
                 onPress={() => {
-                    if (text != "") {
-                        submitHandler(text);                        
+                    if (text.trim() != "") {
+                        submitHandler(text);
+                        setText("");
                     }
                 }}
                 title='add item'
