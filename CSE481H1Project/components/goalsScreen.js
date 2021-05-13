@@ -6,7 +6,7 @@ import AddItem from './addItem';
 import Header from './header';
 import Item from './item';
 
-export default function () {
+export default function GoalsScreen() {
     const [list, setList] = useState([
         {text: 'coffee', key: 1},
         {text: 'bread', key: 2},
@@ -39,7 +39,7 @@ export default function () {
 
     return (
         <View style={styles.container}>
-            <Header headerTitle="My Grocery List" />
+            <Header headerTitle="My Goals" />
             <View style={styles.content}>
                 <AddItem submitHandler={ submitHandler } />
                 <FlatList style={styles.list}
