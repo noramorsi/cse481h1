@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 export default function AddItem({ submitHandler }) {
 
-    const [text, setText] = useState();
+    const [text, setText] = useState("");
 
     const styles = StyleSheet.create({
         newItem: {
