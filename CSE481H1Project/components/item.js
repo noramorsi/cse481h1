@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native';
 import Swipeout from 'react-native-swipeout';
+import { TagSelect } from 'react-native-tag-select';
 
 export default function Item (props) {
 
+    // organic, fair-trade, cold-pressed, local
+    const data = [
+          { id: 1, label: 'organic' },
+          { id: 2, label: 'fair-trade' },
+          { id: 3, label: 'cold-pressed' },
+          { id: 4, label: 'local' }
+        ];
+
     const styles = StyleSheet.create({
-        item: {
+        text: {
             fontSize: 20,
             fontWeight: 'bold',
+            flexDirection: 'column',
+            flex: 1,
         },
         container: {
             padding: 20,
@@ -15,11 +26,16 @@ export default function Item (props) {
             backgroundColor: '#EFE7E6',
             flexDirection: 'row',
         },
-
         swipeout: {
           margin: 5,
           backgroundColor: '#EFE7E6',
-      }
+        },
+        tagLabel: {
+          fontSize: 12,
+        },
+        tagItem: {
+          padding: 5,
+        }
     });
 
     // https://stackoverflow.com/questions/31889921/how-to-implement-radio-button-in-react-native
@@ -66,7 +82,17 @@ export default function Item (props) {
           <TouchableOpacity onPress={()=>{setChecked(!checked)}}>
             <RadioButton checked={checked}/>
           </TouchableOpacity>
-          <Text style={styles.item}>  {props.item.text}</Text>
+          <View style={styles.item}>
+              <Text style={styles.text}>  {props.item.text}</Text>
+              <TagSelect
+                        itemStyle={styles.tagItem}
+                        itemLabelStyle={styles.tagLabel}
+                        data={data}
+                        ref={(tag) => {
+                          this.tag = tag;
+                        }}
+                      />
+          </View>
         </View>
       </Swipeout>
 
