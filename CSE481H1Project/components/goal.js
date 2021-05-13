@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Linking, View, Button, TouchableOpacity } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 
 export default function Goal (props) {
@@ -55,14 +55,21 @@ export default function Goal (props) {
           <View>
           <Text style={styles.title}>  {props.goal.title}</Text>
               {
-                props.showDescription ?
-                <Text style={styles.description}>  {props.goal.description}</Text>
+                props.showMoreInfo ? 
+                <View>
+                  <Text style={styles.description}>  {props.goal.description}</Text>
+                  <TouchableOpacity onPress={() => Linking.openURL(props.goal.link)}>
+                    <Text style={{color: 'blue'}}>
+                      Click here for more info!
+                    </Text>
+                  </TouchableOpacity>
+                </View>
                   : null
               }
             </View>
         );
       }
-      const [showDescription, setShowDescription] = useState(false);
+      const [showMoreInfo, setshowMoreInfo] = useState(false);
 
 
     return (
@@ -70,8 +77,8 @@ export default function Goal (props) {
           <TouchableOpacity onPress={()=>{setChecked(!checked)}}>
             <RadioButton checked={checked}/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{setShowDescription(!showDescription)}}>
-            <GoalText goal={props.goal} showDescription={showDescription}/>
+          <TouchableOpacity onPress={()=>{setshowMoreInfo(!showMoreInfo)}}>
+            <GoalText goal={props.goal} showMoreInfo={showMoreInfo}/>
           </TouchableOpacity>
         </View>
     )
