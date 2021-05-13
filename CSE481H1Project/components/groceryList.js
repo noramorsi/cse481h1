@@ -6,7 +6,7 @@ import AddItem from './addItem';
 import Header from './header';
 import Item from './item';
 
-const GroceryList = () => {
+export default function () {
     const [list, setList] = useState([
         {text: 'coffee', key: 1},
         {text: 'bread', key: 2},
@@ -50,5 +50,3 @@ const GroceryList = () => {
         </View>
     );
 };
-
-export default GroceryList;
