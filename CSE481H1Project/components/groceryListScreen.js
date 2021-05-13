@@ -26,7 +26,8 @@ export default function GroceryListScreen () {
         },
         content: {
             flex: 1,
-            padding: 40,
+            padding: 20,
+            backgroundColor: '#fff',
         },
         list: {
             flex: 1,

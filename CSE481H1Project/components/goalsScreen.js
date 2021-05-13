@@ -24,7 +24,7 @@ export default function GoalsScreen() {
         },
         content: {
             flex: 1,
-            padding: 40,
+            padding: 20,
         },
         list: {
             flex: 1,

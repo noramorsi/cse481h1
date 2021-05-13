@@ -14,7 +14,12 @@ export default function Item (props) {
             margin: 5,
             backgroundColor: '#EFE7E6',
             flexDirection: 'row',
-        }
+        },
+
+        swipeout: {
+          margin: 5,
+          backgroundColor: '#EFE7E6',
+      }
     });
 
     // https://stackoverflow.com/questions/31889921/how-to-implement-radio-button-in-react-native
@@ -56,7 +61,7 @@ export default function Item (props) {
 
     return (
 
-      <Swipeout right={swipeoutBtns}>
+      <Swipeout style={styles.swipeout} right={swipeoutBtns}>
         <View style={styles.container}>          
           <TouchableOpacity onPress={()=>{setChecked(!checked)}}>
             <RadioButton checked={checked}/>
