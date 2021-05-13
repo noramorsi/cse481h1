@@ -10,16 +10,27 @@ export default function GroceryListScreen () {
     const [list, setList] = useState([
         {text: 'coffee', key: 1},
         {text: 'bread', key: 2},
-        {text: 'milk', key: 3}
+        {text: 'milk', key: 3},
+        {text: 'eggs', key: 4},
+        {text: 'cake', key: 5},
+        {text: 'bananas', key: 6},
+        {text: 'rice', key: 7},
+        {text: 'cheese', key: 8},
+        {text: 'watermelon', key: 9},
     ]);
 
     const styles = StyleSheet.create({
         container: {
+            flex: 1,
+            backgroundColor: '#fff',
         },
         content: {
-          padding: 40,
+            flex: 1,
+            padding: 40,
         },
         list: {
+            flex: 1,
+            marginTop: 20,
         }
     });
 

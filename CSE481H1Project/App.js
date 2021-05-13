@@ -7,7 +7,7 @@ import GroceryListScreen from './components/groceryListScreen';
 import GoalsScreen from './components/goalsScreen';
 import TreeScreen from './components/treeScreen';
 
-
+// https://reactnavigation.org/docs/tab-based-navigation
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {

@@ -7,7 +7,7 @@ export default function AddItem({ submitHandler }) {
 
     const styles = StyleSheet.create({
         newItem: {
-            fontSize: 20,
+            fontSize: 25,
         },
     });
 
@@ -26,7 +26,7 @@ export default function AddItem({ submitHandler }) {
                     }
                 }}
                 title='add item'
-                color='blue'
+                color='skyblue'
             />
         </View>
     )

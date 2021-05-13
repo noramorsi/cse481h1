@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button, TouchableOpacity } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 
-export default function Item (props) {
+export default function Goal (props) {
 
     const styles = StyleSheet.create({
-        item: {
+        title: {
             fontSize: 20,
             fontWeight: 'bold',
+        },
+        description: {
+          paddingTop: 10,
+          fontSize: 15,
         },
         container: {
             padding:20,
             margin:5,
-            backgroundColor: 'pink',
+            backgroundColor: 'lightblue',
             flexDirection: 'row',
         }
     });
@@ -43,28 +47,33 @@ export default function Item (props) {
             </View>
         );
       }
-
-    let swipeoutBtns = [
-        {
-          text: 'Delete',
-          backgroundColor: 'red',
-          onPress: () => { props.deleteHandler(props.item.key) },
-        }
-      ]
-
       const [checked, setChecked] = useState(false);
 
-    return (
+      const GoalText = (props) => {
 
-      <Swipeout right={swipeoutBtns}>
+        return (
+          <View>
+          <Text style={styles.title}>  {props.goal.title}</Text>
+              {
+                props.showDescription ?
+                <Text style={styles.description}>  {props.goal.description}</Text>
+                  : null
+              }
+            </View>
+        );
+      }
+      const [showDescription, setShowDescription] = useState(false);
+
+
+    return (
         <View style={styles.container}>          
-          <TouchableOpacity onPress={()=>{setChecked(true)}}>
+          <TouchableOpacity onPress={()=>{setChecked(!checked)}}>
             <RadioButton checked={checked}/>
           </TouchableOpacity>
-          <Text style={styles.item}>  {props.item.text}</Text>
+          <TouchableOpacity onPress={()=>{setShowDescription(!showDescription)}}>
+            <GoalText goal={props.goal} showDescription={showDescription}/>
+          </TouchableOpacity>
         </View>
-      </Swipeout>
-
     )
 
 }
