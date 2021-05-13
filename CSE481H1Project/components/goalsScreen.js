@@ -9,14 +9,14 @@ import SubmitGoals from './submitGoals';
 
 export default function GoalsScreen() {
     const [list, setList] = useState([
-        {title: 'my goal1', description: 'blablablabla', key: 1},
-        {title: 'my goal2', description: 'blablablabla', key: 2},
-        {title: 'my goal3', description: 'blablablabla', key: 3},
-        {title: 'my goal4', description: 'blablablabla', key: 4},
-        {title: 'my goal5', description: 'blablablabla', key: 5},
-        {title: 'my goal6', description: 'blablablabla', key: 6},
-        {title: 'my goal7', description: 'blablablabla', key: 7},
-        {title: 'my goal8', description: 'blablablabla', key: 8},
+        {title: 'Replace almonds with cashew! blabla', 
+        description: 'Some reasonings as why you may want to do that; blablabla',
+        link: 'https://google.com',
+        foodFrom: 'almonds',
+        foodTo: 'cashew',
+        tag: '',
+        motivationLevel: 1,
+        key: 1},
     ]);
 
     const styles = StyleSheet.create({
@@ -33,6 +33,11 @@ export default function GoalsScreen() {
             marginTop: 20,
         }
     });
+
+    const submitGoalsHandler = () => {
+        // todo: watch the tutorial on how to pass data across screens.
+    };
+
 
     return (
         <View style={styles.container}>
