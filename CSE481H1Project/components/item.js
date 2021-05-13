@@ -10,9 +10,9 @@ export default function Item (props) {
             fontWeight: 'bold',
         },
         container: {
-            padding:20,
-            margin:5,
-            backgroundColor: 'pink',
+            padding: 20,
+            margin: 5,
+            backgroundColor: '#EFE7E6',
             flexDirection: 'row',
         }
     });
@@ -26,7 +26,7 @@ export default function Item (props) {
               width: 24,
               borderRadius: 12,
               borderWidth: 2,
-              borderColor: 'white',
+              borderColor: '#170312',
               alignItems: 'center',
               justifyContent: 'center',
             }, props.style]}>
@@ -36,7 +36,7 @@ export default function Item (props) {
                     height: 12,
                     width: 12,
                     borderRadius: 6,
-                    backgroundColor: 'white',
+                    backgroundColor: '#170312',
                   }}/>
                   : null
               }
@@ -58,7 +58,7 @@ export default function Item (props) {
 
       <Swipeout right={swipeoutBtns}>
         <View style={styles.container}>          
-          <TouchableOpacity onPress={()=>{setChecked(true)}}>
+          <TouchableOpacity onPress={()=>{setChecked(!checked)}}>
             <RadioButton checked={checked}/>
           </TouchableOpacity>
           <Text style={styles.item}>  {props.item.text}</Text>

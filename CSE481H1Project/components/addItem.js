@@ -26,7 +26,7 @@ export default function AddItem({ submitHandler }) {
                     }
                 }}
                 title='add item'
-                color='skyblue'
+                color='#28965A'
             />
         </View>
     )

@@ -7,7 +7,7 @@ export default function Header (props) {
         header: {
             height: 80,
             paddingTop: 20,
-            backgroundColor: 'lightgreen'
+            backgroundColor: '#ADFFAD'
         },
         title: {
             textAlign: 'center',
