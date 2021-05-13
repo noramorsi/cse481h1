@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, ScrollView, FlatList, View, TextInput } from 'react-native';
 import Header from './header';
 import Goal from './goal';
+import SubmitGoals from './submitGoals';
+
 
 export default function GoalsScreen() {
     const [list, setList] = useState([
@@ -41,6 +43,7 @@ export default function GoalsScreen() {
                     renderItem={({item}) => (
                     <Goal goal={item}/>)}/>
             </View>
+            <SubmitGoals/>
         </View>
     );
 };
