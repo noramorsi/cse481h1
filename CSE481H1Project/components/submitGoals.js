@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
-export default function SubmitGoal({ }) {
+export default function SubmitGoal({ submitHandler }) {
 
     const styles = StyleSheet.create({
 
@@ -10,7 +10,7 @@ export default function SubmitGoal({ }) {
     return (
         <View>
             <Button
-                onPress={() => {}}
+                onPress={() => {submitHandler()}}
                 title='Submit My Goals!'
                 color='#28965A'
             />

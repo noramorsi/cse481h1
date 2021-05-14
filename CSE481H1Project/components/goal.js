@@ -71,10 +71,16 @@ export default function Goal (props) {
       }
       const [showMoreInfo, setshowMoreInfo] = useState(false);
 
-
     return (
         <View style={styles.container}>          
-          <TouchableOpacity onPress={()=>{setChecked(!checked)}}>
+          <TouchableOpacity onPress={()=>{
+            if (!checked) {
+              props.selectHandler(props.goal.key);
+            } else {
+              props.unselectHandler(props.goal.key);
+            }
+            setChecked(!checked)
+            }}>
             <RadioButton checked={checked}/>
           </TouchableOpacity>
           <TouchableOpacity onPress={()=>{setshowMoreInfo(!showMoreInfo)}}>
