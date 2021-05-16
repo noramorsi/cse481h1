@@ -6,7 +6,7 @@ import AddItem from './addItem';
 import Header from './header';
 import Item from './item';
 
-export default function GroceryListScreen () {
+export default function GroceryListScreen ({ route }) {
     const [list, setList] = useState([
         {text: 'almonds', key: 1},
         {text: 'bread', key: 2},
@@ -70,6 +70,17 @@ export default function GroceryListScreen () {
                     data={list}
                     renderItem={({item}) => (
                     <Item item={item} deleteHandler={ deleteHandler } selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}/>
+            </View>
+            <View> 
+            {(() => {
+              // TODO: do something with data passed here!
+              if (typeof route.params == 'undefined'){
+                  return (
+                      <Text>For testing purposes only :))</Text>
+                  )
+              }
+              return <Text> { JSON.stringify(route.params) }</Text>;
+            })()}
             </View>
         </View>
     );

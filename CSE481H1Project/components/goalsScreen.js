@@ -6,7 +6,7 @@ import Header from './header';
 import Goal from './goal';
 import SubmitGoals from './submitGoals';
 
-export default function GoalsScreen() {
+export default function GoalsScreen({ navigation }) {
     const [recs, setRecs] = useState([
         {title: 'Replace almonds with cashew! blabla', 
         description: 'Some reasonings as why you may want to do that; blablabla',
@@ -72,7 +72,8 @@ export default function GoalsScreen() {
             let selectedKeys = selected.map(a => a.key);
             let firstHalf = prevRecs.filter(current => (selectedKeys.includes(current.key)));
             // let secondHalf = prevRecs.filter(current => !(selectedKeys.includes(current.key)));
-            // TODO: pass data!!
+            // pass data!!
+            navigation.navigate("Grocery List", firstHalf);
             return firstHalf;//.concat(secondHalf);
         });
     };
