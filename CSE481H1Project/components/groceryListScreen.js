@@ -8,16 +8,14 @@ import Item from './item';
 
 export default function GroceryListScreen () {
     const [list, setList] = useState([
-        {text: 'coffee', key: 1},
+        {text: 'almonds', key: 1},
         {text: 'bread', key: 2},
         {text: 'milk', key: 3},
-        {text: 'eggs', key: 4},
-        {text: 'cake', key: 5},
-        {text: 'bananas', key: 6},
-        {text: 'rice', key: 7},
-        {text: 'cheese', key: 8},
-        {text: 'watermelon', key: 9},
     ]);
+
+    const[selected, setSelected] = useState ([
+        {key: -1}
+    ])
 
     const styles = StyleSheet.create({
         container: {
@@ -49,6 +47,20 @@ export default function GroceryListScreen () {
         });
     }
 
+    const selectItemHandler = (itemKey) => {
+        setSelected((prevSelected) => {
+            return [
+                {key: itemKey,},
+                ...prevSelected];
+        });
+    };
+
+    const unselectItemHandler = (itemKey) => {
+        setSelected((prevSelected) => {
+            return prevSelected.filter(current => current.key != itemKey);
+        });
+    };
+
     return (
         <View style={styles.container}>
             <Header headerTitle="My Grocery List" />
@@ -57,7 +69,7 @@ export default function GroceryListScreen () {
                 <FlatList style={styles.list}
                     data={list}
                     renderItem={({item}) => (
-                    <Item item={item} deleteHandler={ deleteHandler }/>)}/>
+                    <Item item={item} deleteHandler={ deleteHandler } selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}/>
             </View>
         </View>
     );

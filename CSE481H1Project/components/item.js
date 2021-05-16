@@ -76,10 +76,16 @@ export default function Item (props) {
       const [checked, setChecked] = useState(false);
 
     return (
-
       <Swipeout style={styles.swipeout} right={swipeoutBtns}>
         <View style={styles.container}>          
-          <TouchableOpacity onPress={()=>{setChecked(!checked)}}>
+          <TouchableOpacity onPress={()=>{
+            if (!checked) {
+              props.selectHandler(props.item.key);
+            } else {
+              props.unselectHandler(props.item.key);
+            }
+            setChecked(!checked)
+            }}>
             <RadioButton checked={checked}/>
           </TouchableOpacity>
           <View style={styles.item}>
@@ -89,7 +95,7 @@ export default function Item (props) {
                         itemLabelStyle={styles.tagLabel}
                         data={data}
                         ref={(tag) => {
-                          this.tag = tag;
+                          //this.tag = tag;
                         }}
                       />
           </View>

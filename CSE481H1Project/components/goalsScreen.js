@@ -71,9 +71,9 @@ export default function GoalsScreen() {
         setRecs((prevRecs) => {
             let selectedKeys = selected.map(a => a.key);
             let firstHalf = prevRecs.filter(current => (selectedKeys.includes(current.key)));
-            let secondHalf = prevRecs.filter(current => !(selectedKeys.includes(current.key)));
+            // let secondHalf = prevRecs.filter(current => !(selectedKeys.includes(current.key)));
             // TODO: pass data!!
-            return firstHalf.concat(secondHalf);
+            return firstHalf;//.concat(secondHalf);
         });
     };
 
