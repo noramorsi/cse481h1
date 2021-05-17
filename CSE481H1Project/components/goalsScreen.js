@@ -71,10 +71,10 @@ export default function GoalsScreen({ navigation }) {
         setRecs((prevRecs) => {
             let selectedKeys = selected.map(a => a.key);
             let firstHalf = prevRecs.filter(current => (selectedKeys.includes(current.key)));
-            // let secondHalf = prevRecs.filter(current => !(selectedKeys.includes(current.key)));
-            // pass data!!
+            let secondHalf = prevRecs.filter(current => !(selectedKeys.includes(current.key)));
             navigation.navigate("Grocery List", firstHalf);
-            return firstHalf;//.concat(secondHalf);
+            // will need to re-scan the list and give new goals, but right now let's keep it simple
+            return firstHalf.concat(secondHalf);
         });
     };
 
