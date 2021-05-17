@@ -73,7 +73,8 @@ export default function Item (props) {
         }
       ]
 
-      const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(false);
+    const [tag, setTag] = useState("");
 
     return (
       <Swipeout style={styles.swipeout} right={swipeoutBtns}>
@@ -95,7 +96,7 @@ export default function Item (props) {
                         itemLabelStyle={styles.tagLabel}
                         data={data}
                         ref={(tag) => {
-                          //this.tag = tag;
+                          setTag(tag)
                         }}
                       />
           </View>
