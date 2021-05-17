@@ -6,7 +6,7 @@ import Header from './header';
 import Goal from './goal';
 import SubmitGoals from './submitGoals';
 
-export default function GoalsScreen({ navigation }) {
+export default function GoalsScreen({ route, navigation }) {
     const [recs, setRecs] = useState([
         {title: 'Replace almonds with cashew! blabla', 
         description: 'Some reasonings as why you may want to do that; blablabla',
@@ -68,14 +68,9 @@ export default function GoalsScreen({ navigation }) {
     };
 
     const submitGoalsHandler = () => {
-        setRecs((prevRecs) => {
             let selectedKeys = selected.map(a => a.key);
-            let firstHalf = prevRecs.filter(current => (selectedKeys.includes(current.key)));
-            let secondHalf = prevRecs.filter(current => !(selectedKeys.includes(current.key)));
-            navigation.navigate("Grocery List", firstHalf);
-            // will need to re-scan the list and give new goals, but right now let's keep it simple
-            return firstHalf.concat(secondHalf);
-        });
+            let selectedGoals = recs.filter(current => (selectedKeys.includes(current.key)));
+            navigation.navigate("Grocery List", selectedGoals);
     };
 
     return (
@@ -88,6 +83,17 @@ export default function GoalsScreen({ navigation }) {
                     <Goal goal={item} selectHandler={ selectGoalHandler } unselectHandler={ unselectGoalHandler }/>)}/>
             </View>
             <SubmitGoals submitHandler={ submitGoalsHandler }/>
+            <View> 
+            {(() => {
+              // TODO: do something with data passed here!
+              if (typeof route.params == 'undefined'){
+                  return (
+                      <Text>For testing purposes only :))</Text>
+                  )
+              }
+              return <Text> { JSON.stringify(route.params) }</Text>;
+            })()}
+            </View>
         </View>
     );
 };

@@ -5,8 +5,9 @@ import { StyleSheet, Text, ScrollView, FlatList, View, TextInput } from 'react-n
 import AddItem from './addItem';
 import Header from './header';
 import Item from './item';
+import SubmitGroceryList from './submitGroceryList';
 
-export default function GroceryListScreen ({ route }) {
+export default function GroceryListScreen ({ route, navigation }) {
     const [list, setList] = useState([
         {text: 'almonds', key: 1},
         {text: 'bread', key: 2},
@@ -61,6 +62,13 @@ export default function GroceryListScreen ({ route }) {
         });
     };
 
+    const submitGroceryListHandler = () => {
+        let selectedKeys = selected.map(a => a.key);
+        // TODO: is there a way to pass items???
+        let unselectedItems = list.filter(current => !(selectedKeys.includes(current.key)));
+        navigation.navigate("Goals", unselectedItems);
+    };
+
     return (
         <View style={styles.container}>
             <Header headerTitle="My Grocery List" />
@@ -69,7 +77,9 @@ export default function GroceryListScreen ({ route }) {
                 <FlatList style={styles.list}
                     data={list}
                     renderItem={({item}) => (
-                    <Item item={item} deleteHandler={ deleteHandler } selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}/>
+                    <Item item={item} deleteHandler={ deleteHandler } selectHandler={ selectItemHandler } unselectHandler={ unselectItemHandler }/>)}
+                />
+                <SubmitGroceryList submitHandler={ submitGroceryListHandler }/>
             </View>
             <View> 
             {(() => {
