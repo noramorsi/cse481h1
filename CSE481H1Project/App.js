@@ -16,8 +16,8 @@ const Stack = createStackNavigator();
 function GroceryListScreenNested() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="Grocery List" component={GroceryListScreen} />
-        <Stack.Screen name="Goals" component={GoalsScreen} />
+        <Stack.Screen name="Grocery List" component={GroceryListScreen} options={{headerShown:false}}/>
+        <Stack.Screen name="Goals" component={GoalsScreen} options={{headerShown:false}} />
       </Stack.Navigator>
     );
 }
